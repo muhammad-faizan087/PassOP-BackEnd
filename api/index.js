@@ -47,10 +47,6 @@ const verifyToken = (req, res, next) => {
   }
 };
 
-app.get("/", async (res, req) => {
-  return res.status(200).json({ message: "Hello" });
-});
-
 app.get("/passwords", verifyToken, async (req, res) => {
   try {
     const passwords = await passwordsCollection
