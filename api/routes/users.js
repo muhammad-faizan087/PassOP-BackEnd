@@ -7,8 +7,6 @@ import "dotenv/config";
 
 const url = process.env.MONGO_URI;
 const client = new MongoClient(url, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
   ssl: true,
 });
 

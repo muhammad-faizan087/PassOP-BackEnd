@@ -10,8 +10,6 @@ import "dotenv/config";
 
 const url = process.env.MONGO_URI;
 const client = new MongoClient(url, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
   ssl: true,
 });
 
@@ -50,7 +48,7 @@ const verifyToken = (req, res, next) => {
 };
 
 app.get("/", async (res, req) => {
-  res.send("BackEnd Running");
+  return res.status(200).json({ message: "Hello" });
 });
 
 app.get("/passwords", verifyToken, async (req, res) => {
