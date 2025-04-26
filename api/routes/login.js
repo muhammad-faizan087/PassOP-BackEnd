@@ -3,7 +3,7 @@ const router = express.Router();
 import { MongoClient } from "mongodb";
 import bodyParser from "body-parser";
 import cors from "cors";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import "dotenv/config";
 
@@ -27,7 +27,7 @@ router.post("/", async (req, res) => {
 
     if (!user) return res.status(400).json({ error: "Invalid credentials" });
 
-    const isMatch = await bcrypt.compare(password, user.password);
+    const isMatch = await bcrypt.compareSync(password, user.password);
     if (!isMatch) return res.status(400).json({ error: "Invalid credentials" });
 
     const token = jwt.sign({ userID: user.userID }, process.env.JWT_SECRET);
