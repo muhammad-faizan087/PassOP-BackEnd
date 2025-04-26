@@ -6,7 +6,11 @@ import cors from "cors";
 import "dotenv/config";
 
 const url = process.env.MONGO_URI;
-const client = new MongoClient(url);
+const client = new MongoClient(url, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  ssl: true,
+});
 
 const dbName = "PassOP";
 await client.connect();
