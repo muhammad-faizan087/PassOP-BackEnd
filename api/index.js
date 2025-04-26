@@ -49,6 +49,10 @@ const verifyToken = (req, res, next) => {
   }
 };
 
+app.get("/", async (res, req) => {
+  res.send("BackEnd Running");
+});
+
 app.get("/passwords", verifyToken, async (req, res) => {
   try {
     const passwords = await passwordsCollection
