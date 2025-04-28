@@ -30,6 +30,7 @@ app.use(
     origin: ["http://localhost:5173", "https://pass-op-front-end.vercel.app/"],
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true,
   })
 );
 app.use(bodyParser.json());
